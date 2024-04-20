@@ -7,11 +7,24 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # changes default homepage to restaurants index
   root "restaurants#index"
+
+  #Read All
   get "restaurants", to: "restaurants#index"
+
+  #Create
   get "restaurants/new", to: "restaurants#new"
   post "restaurants", to: "restaurants#create"
-  get "restaurants/:id", to: "restaurants#show"
 
+  #Read One
+  get "restaurants/:id", to: "restaurants#show", as: :restaurant
+  get "restaurants/:id/edit", to: "restaurants#edit"
 
+  #Update
+  patch "restaurants/:id", to: "restaurants#update"
+
+  #Delete
+  delete "restaurants/:id", to: "restaurants#destroy"
 end
